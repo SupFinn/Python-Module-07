@@ -22,8 +22,8 @@ class CreatureCard(Card):
             if game_state['available_mana'] < self.cost:
                 print("MANA: too low mana!")
                 return {}
-        except Exception as e:
-            print(f"Error Detected 💣️: {e}")
+        except Exception:
+            print(f"Error Detected: game state access fail.")
             return {}
 
         game_state['available_mana'] -= self.cost
