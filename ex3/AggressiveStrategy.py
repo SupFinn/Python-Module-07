@@ -25,8 +25,8 @@ class AggressiveStrategy:
             if isinstance(card, CreatureCard):
                 if enemies:
                     target = enemies[0]
-                    card.attack(target)
-                    damage_dealt += card.attack
+                    result = card.attack_target(target)
+                    damage_dealt += result.get("damage_dealt", 0)
                     targets_attacked.append(target.name)
                 else:
                     print("No enemies to attack.")
