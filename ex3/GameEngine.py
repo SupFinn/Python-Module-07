@@ -4,6 +4,7 @@ from ex3.CardFactory import CardFactory
 from ex3.GameStrategy import GameStrategy
 from typing import List, Dict
 
+
 class GameEngine:
     turns_simulated: int = 0
 
@@ -13,9 +14,11 @@ class GameEngine:
         self.cards_created: int = 0
         self.total_damage: int = 0
 
-    def configure_engine(self, factory: CardFactory, strategy: GameStrategy) -> None:
-            self.factory = factory
-            self.strategy = strategy
+    def configure_engine(self,
+                         factory: CardFactory,
+                         strategy: GameStrategy) -> None:
+        self.factory = factory
+        self.strategy = strategy
 
     def simulate_turn(self) -> Dict:
         if not self.factory or not self.strategy:

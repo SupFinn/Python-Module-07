@@ -1,6 +1,7 @@
 from ex0.Card import Card
 from typing import Dict
 
+
 class CreatureCard(Card):
 
     def __init__(self,
@@ -13,7 +14,6 @@ class CreatureCard(Card):
         self.attack = attack
         self.health = health
 
-
     def play(self, game_state: dict) -> Dict:
         try:
             if not game_state['is_playable']:
@@ -23,7 +23,7 @@ class CreatureCard(Card):
                 print("MANA: too low mana!")
                 return {}
         except Exception:
-            print(f"Error Detected: game state access fail.")
+            print("Error Detected: game state access fail.")
             return {}
 
         game_state['available_mana'] -= self.cost
@@ -35,7 +35,6 @@ class CreatureCard(Card):
             'effect': 'Creature summoned to battlefield'
         }
 
-
     def get_card_info(self) -> Dict:
         stats: Dict = super().get_card_info()
         stats.update({
@@ -44,7 +43,6 @@ class CreatureCard(Card):
             'health': self.health
         })
         return stats
-
 
     def attack_target(self, target) -> Dict:
         return {

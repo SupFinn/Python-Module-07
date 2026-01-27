@@ -1,10 +1,10 @@
 from ex0.Card import Card
 
+
 class SpellCard(Card):
     def __init__(self, name: str, cost: int, rarity: str, effect_type: str):
         super().__init__(name, cost, rarity)
         self.effect_type = effect_type
-
 
     def play(self, game_state: dict) -> dict:
         try:
@@ -15,7 +15,7 @@ class SpellCard(Card):
                 print("MANA: too low mana!")
                 return {}
         except Exception:
-            print(f"Error Detected: game state access fail.")
+            print("Error Detected: game state access fail.")
             return {}
 
         game_state['available_mana'] -= self.cost
@@ -26,7 +26,6 @@ class SpellCard(Card):
             'mana_used': self.cost,
             'effect': self.effect_type
         }
-
 
     def resolve_effect(self, targets: list) -> dict:
         return {

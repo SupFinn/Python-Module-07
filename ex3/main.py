@@ -1,7 +1,7 @@
 from ex3.FantasyCardFactory import FantasyCardFactory
 from ex3.AggressiveStrategy import AggressiveStrategy
 from ex3.GameEngine import GameEngine
-from typing import Dict
+
 
 def main() -> None:
     print("\n=== DataDeck Game Engine ===\n")
@@ -27,7 +27,10 @@ def main() -> None:
     print("\nGame Report:")
     print(engine.get_engine_status())
 
-    print("\nAbstract Factory + Strategy Pattern: Maximum flexibility achieved!")
+    print(
+        "\nAbstract Factory + Strategy Pattern: Maximum flexibility achieved!"
+        )
+
 
 if __name__ == "__main__":
     main()

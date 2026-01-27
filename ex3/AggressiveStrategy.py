@@ -1,10 +1,11 @@
 from ex0.Card import Card
 from ex0.CreatureCard import CreatureCard
-from typing import List
+from typing import List, Dict
+
 
 class AggressiveStrategy:
-    def execute_turn(self, hand: list, battlefield: list) -> dict:
-        cards_played: List[Card]= []
+    def execute_turn(self, hand: list, battlefield: list) -> Dict:
+        cards_played: List[Card] = []
         mana_used: int = 0
         damage_dealt: int = 0
         targets_attacked = []
@@ -40,10 +41,8 @@ class AggressiveStrategy:
             'damage_dealt': damage_dealt
         }
 
-
     def get_strategy_name(self) -> str:
         return "AggressiveStrategy"
-
 
     def prioritize_targets(self, available_targets: list) -> list:
         return sorted(

@@ -14,7 +14,6 @@ class TournamentPlatform:
             self.cards[card.card_id] = card
         return card.card_id
 
-
     def create_match(self, card1_id: str, card2_id: str) -> Dict:
         if card1_id not in self.cards or card2_id not in self.cards:
             print("One or both cards are not registered!")
@@ -55,11 +54,11 @@ class TournamentPlatform:
             for c in sorted_cards
         ]
 
-
     def generate_tournament_report(self) -> Dict:
         total_cards = len(self.cards)
         avg_rating = (
-            sum(card.calculate_rating() for card in self.cards.values()) / total_cards
+            sum(card.calculate_rating() for card in self.cards.values())
+            / total_cards
             if total_cards > 0 else 0
         )
         return {

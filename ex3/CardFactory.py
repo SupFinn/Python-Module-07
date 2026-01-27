@@ -1,6 +1,7 @@
 from ex0.Card import Card
 from abc import ABC, abstractmethod
 
+
 class CardFactory(ABC):
 
     @abstractmethod

@@ -3,6 +3,7 @@ from ex2.Combatable import Combatable
 from ex2.Magical import Magical
 from typing import Dict
 
+
 class EliteCard(Card, Combatable, Magical):
 
     def __init__(self,
@@ -16,7 +17,6 @@ class EliteCard(Card, Combatable, Magical):
         self.attack_power: int = attack
         self.defense_power: int = defense
         self.health: int = health
-
 
     def play(self, game_state: Dict) -> Dict:
 
@@ -37,7 +37,6 @@ class EliteCard(Card, Combatable, Magical):
             'effect': "Elite Card summoned to battlefield"
         }
 
-
     def attack(self, target) -> Dict:
         if self.attack_power <= 0:
             print("Error: You can't deal damage")
@@ -54,7 +53,6 @@ class EliteCard(Card, Combatable, Magical):
             'damage': self.attack_power,
             'combat_type': 'melee'
             }
-
 
     def defend(self, incoming_damage: int) -> Dict:
         if self.health <= 0:
@@ -74,7 +72,6 @@ class EliteCard(Card, Combatable, Magical):
             'still_alive': self.health > 0
         }
 
-
     def cast_spell(self, spell_name: str, targets: list) -> Dict:
         if not targets:
             print("Error: There are no to targets !")
@@ -88,7 +85,6 @@ class EliteCard(Card, Combatable, Magical):
             'targets': targets,
             'mana_used': 4,
         }
-
 
     def channel_mana(self, amount: int) -> Dict:
         current_mana = 4
@@ -106,7 +102,6 @@ class EliteCard(Card, Combatable, Magical):
             'total_mana': current_mana + amount,
             }
 
-
     def get_combat_stats(self) -> Dict:
         return {
             'attack': self.attack_power,
@@ -114,7 +109,6 @@ class EliteCard(Card, Combatable, Magical):
             'current_health': self.health,
             'combat_style': 'melee'
         }
-
 
     def get_magic_stats(self) -> Dict:
         return {

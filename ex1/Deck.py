@@ -1,8 +1,7 @@
 from ex0.CreatureCard import Card, CreatureCard
 from ex1.SpellCard import SpellCard
 from ex1.ArtifactCard import ArtifactCard
-from typing import List, Dict, Type
-import math
+from typing import List, Dict
 import random
 
 
@@ -25,7 +24,6 @@ class Deck:
                 card_list.append(card)
         self.cards.append(card)
 
-
     def remove_card(self, card_name: str) -> bool:
         if card_name is None:
             print("Give a name Buddy.")
@@ -42,22 +40,18 @@ class Deck:
         print("Card Not Found 😒.")
         return False
 
-
     def shuffle(self) -> None:
         random.shuffle(self.cards)
 
-
     def draw_card(self) -> Card:
-            card: Card = self.cards.pop()
+        card: Card = self.cards.pop()
+        for card_type, cards_list in self.card_types.items():
+            if isinstance(card, card_type):
+                cards_list.remove(card)
 
-            for card_type, cards_list in self.card_types.items():
-                if isinstance(card, card_type):
-                    cards_list.remove(card)
-            
-            return card
+        return card
 
-
-    def get_deck_stats(self) -> dict:
+    def get_deck_stats(self) -> Dict:
         total_mana_cost = sum([card.cost for card in self.cards])
 
         avg_cost: float = 0.0

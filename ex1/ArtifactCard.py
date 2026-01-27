@@ -1,6 +1,7 @@
 from ex0.Card import Card
 from typing import Dict
 
+
 class ArtifactCard(Card):
     def __init__(self,
                  name: str,
@@ -11,7 +12,6 @@ class ArtifactCard(Card):
         super().__init__(name, cost, rarity)
         self.durability = durability
         self.effect = effect
-
 
     def play(self, game_state: Dict) -> Dict:
         try:
@@ -25,9 +25,8 @@ class ArtifactCard(Card):
                 print("Your Card Got Exhausted Already ☠️.")
                 return {}
         except Exception:
-            print(f"Error Detected 💣️: game state access fail.")
+            print("Error Detected 💣️: game state access fail.")
             return {}
-
 
         game_state['available_mana'] -= self.cost
         game_state['battlefield'].append(self)
@@ -37,7 +36,6 @@ class ArtifactCard(Card):
             'mana_used': self.cost,
             'effect': self.effect_type
         }
-
 
     def activate_ability(self) -> Dict:
         if self.durability <= 0:

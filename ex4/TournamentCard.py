@@ -3,6 +3,7 @@ from ex2.Combatable import Combatable
 from ex4.Rankable import Rankable
 from typing import Dict
 
+
 class TournamentCard(Card, Combatable, Rankable):
     def __init__(self,
                  card_id: str,
@@ -22,7 +23,6 @@ class TournamentCard(Card, Combatable, Rankable):
         self.losses: int = 0
         self.rating: int = 1200
 
-
     def play(self, game_state: Dict) -> Dict:
         try:
             if not game_state['is_playable']:
@@ -32,7 +32,7 @@ class TournamentCard(Card, Combatable, Rankable):
                 print("MANA: too low mana!")
                 return {}
         except Exception:
-            print(f"Error Detected 💣️: game state access fail.")
+            print("Error Detected 💣️: game state access fail.")
             return {}
 
         game_state['available_mana'] -= self.cost
@@ -43,7 +43,6 @@ class TournamentCard(Card, Combatable, Rankable):
             'mana_used': self.cost,
             'effect': "Creature summoned to battlefield"
         }
-
 
     def attack(self, target) -> Dict:
         if self.attack_power <= 0:
@@ -62,7 +61,6 @@ class TournamentCard(Card, Combatable, Rankable):
             'combat_resolved': True
             }
 
-
     def defend(self, incoming_damage: int) -> dict:
         if self.health <= 0:
             print("Error: Your Card is already dead ☠️")
@@ -80,7 +78,6 @@ class TournamentCard(Card, Combatable, Rankable):
             'damage_blocked': self.defense_power,
             'still_alive': self.health > 0
         }
-
 
     def get_combat_stats(self) -> dict:
         return {
@@ -104,7 +101,6 @@ class TournamentCard(Card, Combatable, Rankable):
             'total_matches': total_games,
             'rating': self.calculate_rating()
             }
-
 
     def update_wins(self, wins: int) -> None:
         self.wins += wins

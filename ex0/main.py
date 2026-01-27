@@ -2,17 +2,22 @@ from ex0.CreatureCard import CreatureCard
 from typing import Dict, List
 from enum import Enum
 
+
+class Rarity(Enum):
+    level_1 = "common"
+    level_2 = "rare"
+    level_3 = "legendary"
+
+
 def main() -> None:
     print("=== DataDeck Card Foundation ===\n")
 
     print("Testing Abstract Base Class Design:\n")
     battlefield: List = []
-    class Rarity(Enum):
-        level_1 = "common"
-        level_2 = "rare"
-        level_3 = "legendary"
-    
-    fire_dragon_card = CreatureCard("Fire Dragon", 5, Rarity.level_3.value, 7, 5)
+
+    fire_dragon_card = CreatureCard(
+        "Fire Dragon", 5, Rarity.level_3.value, 7, 5
+        )
 
     print("CreatureCard Info:")
     print(fire_dragon_card.get_card_info())
@@ -29,11 +34,10 @@ def main() -> None:
     print("Play result: ", end='')
     print(fire_dragon_card.play(game_stats))
 
-#==============================================================================
-
-    goblin_warrior = CreatureCard("Goblin Warrior", 2, Rarity.level_2.value, 3, 2)
+    goblin_warrior = CreatureCard(
+        "Goblin Warrior", 2, Rarity.level_2.value, 3, 2
+        )
     player2_mana: int = 3
-
 
     print("\nFire Dragon attacks Goblin Warrior:")
     print("Attack result: ", end='')
@@ -45,5 +49,6 @@ def main() -> None:
 
     print("\nAbstract pattern successfully demonstrated!")
 
-if __name__  == "__main__":
+
+if __name__ == "__main__":
     main()
