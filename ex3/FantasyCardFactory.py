@@ -12,7 +12,7 @@ class FantasyCardFactory(CardFactory):
 
     def __init__(self):
         self.creature_templates = ["Dragon", "Goblin"]
-        self.spell_templates = ["Fireball", "Ice", "Lightning"]
+        self.spell_templates = ["Fireball", "Ice", "Lightning Bolt"]
         self.artifact_templates = ["Rings", "Staffs", "Crystals"]
 
 
@@ -34,37 +34,37 @@ class FantasyCardFactory(CardFactory):
 
     def create_spell(self, name_or_power) -> Card:
         spell_stats = {
-            "Fire": {"cost": 4, "rarity": Rarity.level_1.value, "effect_type": "Deal 4 damage"},
+            "Fireball": {"cost": 4, "rarity": Rarity.level_1.value, "effect_type": "Deal 4 damage"},
             "Ice": {"cost": 2, "rarity": Rarity.level_1.value, "effect_type": "Freeze target"},
-            "Lightning": {"cost": 3, "rarity": Rarity.level_2.value, "effect_type": "Deal 3 damage"}
+            "Lightning Bolt": {"cost": 3, "rarity": Rarity.level_2.value, "effect_type": "Deal 3 damage"}
         }
         if isinstance(name_or_power, str):
             stats = spell_stats[name_or_power]
             return (SpellCard(name_or_power, stats['cost'], stats['rarity'], stats['effect_type']))
 
         if isinstance(name_or_power, int):
-            if name_or_power >= 4: name = "Fire"
-            elif name_or_power == 3: name = "Lightning"
+            if name_or_power >= 4: name = "Fireball"
+            elif name_or_power == 3: name = "Lightning Bolt"
             else: name = "Ice"
             stats = spell_stats[name]
             return (SpellCard(name, stats['cost'], stats['rarity'], stats['effect_type']))
 
 
     def create_artifact(self, name_or_power) -> Card:
-        spell_stats = {
+        artifact_stats = {
             "Rings": {"cost": 1, "rarity": Rarity.level_2.value, "durability": 5, "effect": "+1 mana per turn"},
             "Staffs": {"cost": 3, "rarity": Rarity.level_3.value, "durability": 3, "effect": "Boost spell damage"},
             "Crystals": {"cost": 2, "rarity": Rarity.level_2.value, "durability": 4, "effect": "Draw extra card"}
         }  
         if isinstance(name_or_power, str):
-            stats = spell_stats[name_or_power]
+            stats = artifact_stats[name_or_power]
             return (ArtifactCard(name_or_power, stats['cost'], stats['rarity'], stats['durability'], stats['effect']))
 
         if isinstance(name_or_power, int):
             if name_or_power >= 3: name = "Staffs"
             elif name_or_power == 2: name = "Crystals"
             else: name = "Rings"
-            stats = spell_stats[name]
+            stats = artifact_stats[name]
             return (ArtifactCard(name, stats['cost'], stats['rarity'], stats['durability'], stats['effect']))
 
 

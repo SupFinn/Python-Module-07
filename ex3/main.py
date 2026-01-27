@@ -21,7 +21,13 @@ def main() -> None:
     print("Hand: [Fire Dragon (5), Goblin Warrior (2), Lightning Bolt (3)]\n")
 
     print("Turn execution:")
+    print(f"Strategy: {engine.strategy.get_strategy_name()}")
+    print(f"Actions: {engine.simulate_turn()}")
 
+    print("\nGame Report:")
+    print(engine.get_engine_status())
+
+    print("\nAbstract Factory + Strategy Pattern: Maximum flexibility achieved!")
 
 if __name__ == "__main__":
     main()

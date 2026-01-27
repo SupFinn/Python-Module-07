@@ -41,13 +41,13 @@ class EliteCard(Card, Combatable, Magical):
     def attack(self, target) -> Dict:
         if self.attack_power <= 0:
             print("Error: You can't deal damage")
-            return
+            return {}
         elif self.health <= 0:
             print("Error: Already Dead 💀!")
-            return
+            return {}
         if not isinstance(target, Combatable):
             print("Error: The card must be a Combatable card")
-            return
+            return {}
         return {
             'attacker': self.name,
             'target': target.name,

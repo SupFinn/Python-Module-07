@@ -30,8 +30,8 @@ class AggressiveStrategy:
                     targets_attacked.append(target.name)
                 else:
                     print("No enemies to attack.")
-            else:
-                print("Your Card Can't Deal Damage.")
+            elif not isinstance(card, CreatureCard):
+                continue
 
         return {
             'cards_played': [card.name for card in cards_played],
