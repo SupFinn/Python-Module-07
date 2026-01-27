@@ -1,9 +1,10 @@
 from ex0.Card import Card
 from ex0.CreatureCard import CreatureCard
+from ex3.GameStrategy import GameStrategy
 from typing import List, Dict
 
 
-class AggressiveStrategy:
+class AggressiveStrategy(GameStrategy):
     def execute_turn(self, hand: list, battlefield: list) -> Dict:
         cards_played: List[Card] = []
         mana_used: int = 0

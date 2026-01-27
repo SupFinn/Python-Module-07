@@ -44,15 +44,7 @@ class TournamentPlatform:
             key=lambda c: c.calculate_rating(),
             reverse=True
         )
-        return [
-            {
-                'card_id': c.card_id,
-                'name': c.name,
-                'rating': c.calculate_rating(),
-                'record': f"{c.wins}-{c.losses}"
-            }
-            for c in sorted_cards
-        ]
+        return [c.get_rank_info() for c in sorted_cards]
 
     def generate_tournament_report(self) -> Dict:
         total_cards = len(self.cards)
@@ -64,6 +56,6 @@ class TournamentPlatform:
         return {
             'total_cards': total_cards,
             'matches_played': self.matches_played,
-            'avg_rating': avg_rating,
+            'avg_rating': int(avg_rating),
             'platform_status': 'active' if total_cards > 0 else 'inactive'
         }

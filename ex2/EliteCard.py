@@ -87,7 +87,7 @@ class EliteCard(Card, Combatable, Magical):
         }
 
     def channel_mana(self, amount: int) -> Dict:
-        current_mana = 4
+        current_mana: int = 4
 
         if amount <= 0:
             print("Error: Invalid mana amount ❌️")

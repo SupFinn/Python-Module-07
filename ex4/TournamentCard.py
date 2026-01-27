@@ -12,7 +12,8 @@ class TournamentCard(Card, Combatable, Rankable):
                  rarity: str,
                  attack: int,
                  defense: int,
-                 health: int
+                 health: int,
+                 rating: int
                  ) -> None:
         super().__init__(name, cost, rarity)
         self.card_id: str = card_id
@@ -21,7 +22,7 @@ class TournamentCard(Card, Combatable, Rankable):
         self.health: int = health
         self.wins: int = 0
         self.losses: int = 0
-        self.rating: int = 1200
+        self.rating: int = rating
 
     def play(self, game_state: Dict) -> Dict:
         try:

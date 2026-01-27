@@ -4,7 +4,7 @@ from ex4.TournamentPlatform import TournamentPlatform
 
 def main() -> None:
     print("\n=== DataDeck Tournament Platform ===\n")
-    print("\nRegistering Tournament Cards...\n")
+    print("Registering Tournament Cards...\n")
 
     platform = TournamentPlatform()
     card1 = TournamentCard(
@@ -14,7 +14,8 @@ def main() -> None:
         rarity="Epic",
         attack=8,
         defense=4,
-        health=10
+        health=10,
+        rating=1200
     )
     card2 = TournamentCard(
         card_id="wizard_001",
@@ -23,7 +24,8 @@ def main() -> None:
         rarity="Rare",
         attack=6,
         defense=3,
-        health=8
+        health=8,
+        rating=1150
     )
     for card in [card1, card2]:
         platform.register_card(card)
