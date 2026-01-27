@@ -34,7 +34,7 @@ class ArtifactCard(Card):
         return {
             'card_played': self.name,
             'mana_used': self.cost,
-            'effect': self.effect_type
+            'effect': self.effect
         }
 
     def activate_ability(self) -> Dict:
